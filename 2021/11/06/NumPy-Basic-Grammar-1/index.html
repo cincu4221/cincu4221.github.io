@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="kr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>NumPy 기본 다지기 - 연습장</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="연습장"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="연습장"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Numpy란 무엇인가?Numpy는 상당부분 C언어로 작성된 파이썬 라이브러리이다. 기본적으로 array라는 자료를 생성하고 이를 바탕으로 색인, 처리, 연산 등을 하는 기능을 수행한다. 물론 C언어로 작성되었기 때문에 속도도 꽤나 빠른편이다. Numpy의 기본Numpy 불러오기 Numpy를 사용하기 위해서는 먼저 임포트시켜줘야 한다. 1import nump"><meta property="og:type" content="blog"><meta property="og:title" content="NumPy 기본 다지기"><meta property="og:url" content="https://cincu4221.github.io/2021/11/06/NumPy-Basic-Grammar-1/"><meta property="og:site_name" content="연습장"><meta property="og:description" content="Numpy란 무엇인가?Numpy는 상당부분 C언어로 작성된 파이썬 라이브러리이다. 기본적으로 array라는 자료를 생성하고 이를 바탕으로 색인, 처리, 연산 등을 하는 기능을 수행한다. 물론 C언어로 작성되었기 때문에 속도도 꽤나 빠른편이다. Numpy의 기본Numpy 불러오기 Numpy를 사용하기 위해서는 먼저 임포트시켜줘야 한다. 1import nump"><meta property="og:locale" content="kr"><meta property="og:image" content="https://cincu4221.github.io/images/Numpy_Symbol.png"><meta property="article:published_time" content="2021-11-06T03:06:27.000Z"><meta property="article:modified_time" content="2021-11-06T04:21:31.606Z"><meta property="article:author" content="WJ"><meta property="article:tag" content="Python"><meta property="article:tag" content="Numpy"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/images/Numpy_Symbol.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://cincu4221.github.io/2021/11/06/NumPy-Basic-Grammar-1/"},"headline":"NumPy 기본 다지기","image":["https://cincu4221.github.io/images/Numpy_Symbol.png"],"datePublished":"2021-11-06T03:06:27.000Z","dateModified":"2021-11-06T04:21:31.606Z","author":{"@type":"Person","name":"WJ"},"publisher":{"@type":"Organization","name":"연습장","logo":{"@type":"ImageObject","url":"https://cincu4221.github.io/img/logo.svg"}},"description":"Numpy란 무엇인가?Numpy는 상당부분 C언어로 작성된 파이썬 라이브러리이다. 기본적으로 array라는 자료를 생성하고 이를 바탕으로 색인, 처리, 연산 등을 하는 기능을 수행한다. 물론 C언어로 작성되었기 때문에 속도도 꽤나 빠른편이다. Numpy의 기본Numpy 불러오기 Numpy를 사용하기 위해서는 먼저 임포트시켜줘야 한다. 1import nump"}</script><link rel="canonical" href="https://cincu4221.github.io/2021/11/06/NumPy-Basic-Grammar-1/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-F7MSWFRZKP" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-F7MSWFRZKP');</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="연습장" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-06T03:06:27.000Z" title="2021. 11. 6. 오후 12:06:27">2021-11-06</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-06T04:21:31.606Z" title="2021. 11. 6. 오후 1:21:31">2021-11-06</time></span><span class="level-item">11 minutes read (About 1722 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">NumPy 기본 다지기</h1><div class="content"><h2 id="Numpy란-무엇인가"><a href="#Numpy란-무엇인가" class="headerlink" title="Numpy란 무엇인가?"></a>Numpy란 무엇인가?</h2><p><img src="/images/Numpy_Symbol.png" alt="Numpy_Symbol"><br><code>Numpy</code>는 상당부분 C언어로 작성된 파이썬 라이브러리이다. 기본적으로 <code>array</code>라는 자료를 생성하고 이를 바탕으로 색인, 처리, 연산 등을 하는 기능을 수행한다. 물론 C언어로 작성되었기 때문에 속도도 꽤나 빠른편이다.</p>
+<h2 id="Numpy의-기본"><a href="#Numpy의-기본" class="headerlink" title="Numpy의 기본"></a>Numpy의 기본</h2><h3 id="Numpy-불러오기"><a href="#Numpy-불러오기" class="headerlink" title="Numpy 불러오기"></a>Numpy 불러오기</h3><hr>
+<p><code>Numpy</code>를 사용하기 위해서는 먼저 임포트시켜줘야 한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<p>위처럼 입력하면 <code>Numpy</code>의 임포트가 된다. 뒤의 as np를 빼고 나머지만 입력해도 되지만, 앞으로 사용할 코드에서 조금 더 편히 사용하기 위하여(그리고 관례적으로) as np를 작성해 준다.</p>
+<h3 id="Numpy배열-생성-및-둘러보기"><a href="#Numpy배열-생성-및-둘러보기" class="headerlink" title="Numpy배열 생성 및 둘러보기"></a>Numpy배열 생성 및 둘러보기</h3><hr>
+<p>Numpy는 기본적으로 <code>array</code>라는 자료구조를 사용하기때문에 배열을 생성하는 방법에 대해 먼저 알아두어야 한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">my_array1 = np.array(arr1)</span><br><span class="line"><span class="built_in">print</span>(my_array1)</span><br><span class="line"><span class="built_in">print</span>(my_array1.shape)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<pre><code>[1 2 3]
+(3,)
+</code></pre>
+<p>위의 출력 중 첫째줄은 <code>arr1</code>의 배열을 그대로 <code>my_arrary1</code>로 가져와 출력한 것이고, 둘째 줄은 가져온 배열의 길이를 <code>튜플</code>로 나타낸 것이다. 값 뒤에 콤마(,)가 붙어있는 이유는 값이 하나만 존재할 때, 튜플은 값 뒤에 콤마가 있어야 하기 때문이다.</p>
+<p><br><br></p>
+<hr>
+<p>다음은 2차원 배열일떄의 예제이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_array3 = np.array([[<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>],[<span class="number">8</span>,<span class="number">10</span>,<span class="number">12</span>],[<span class="number">14</span>,<span class="number">16</span>,<span class="number">18</span>],[<span class="number">20</span>,<span class="number">22</span>,<span class="number">24</span>]])</span><br><span class="line"><span class="built_in">print</span>(my_array3)</span><br><span class="line"><span class="built_in">print</span>(my_array3.shape)</span><br><span class="line"><span class="built_in">print</span>(my_array3.dtype)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<pre><code>[[ 2  4  6]
+ [ 8 10 12]
+ [14 16 18]
+[20 22 24]]
+(4, 3)
+int64
+</code></pre>
+<p>먼저 세개의 출력 중 첫번째로 <code>my_array3</code>의 값인 리스트들이 차례로 나열되며, 그 다음으로는 배열의 (행, 열)의 수, 마지막으로 배열내의 요소의 데이터타입을 출력한다.<br><br><br><br></p>
+<hr>
+<p>마지막으로 3차원 배열일때의 예제이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_array5 = np.array([[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>],[<span class="number">5</span>, <span class="number">6</span>]], [[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>], [<span class="number">9</span>, <span class="number">10</span>]]])</span><br><span class="line">my_array5.shape</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<pre><code>(2, 3, 2)
+</code></pre>
+<p>세려는 양(또는 각각) 배열의 수가 대칭일때의 예제이다, 가장 바깥쪽의 배열부터 순서대로 배열의 수를 출력한다.<br>그렇다면 대칭이 아니라면 어떻게 출력될까? 다음을 살펴보자</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_array5 = np.array([[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]], [[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>], [<span class="number">9</span>, <span class="number">10</span>]]])</span><br><span class="line">my_array5.shape</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<pre><code>(2, 3)
+</code></pre>
+<p>출력과 동시에 에러(위 출력창에서는 삭제함)가 뜨는데 추측하기론 양쪽 배열이 대칭이 아니기에 양 배열의 길이가 같은 두번째 항목까지는 출력되나 2와 3으로 갈리는 마지막 항목에서 출력이 안되는것 같다.<br>확실하지않으니 참고만…</p>
+<h2 id="Numpy의-기본-함수들"><a href="#Numpy의-기본-함수들" class="headerlink" title="Numpy의 기본 함수들"></a>Numpy의 기본 함수들</h2><hr>
+<p><code>Numpy</code>는 여러 함수들을 사용할수 있다, 하지만 함수의 종류가 너무 많기 때문에 이 챕터에서는 기본적인 함수들만 알아보도록 한다. </p>
+<ul>
+<li><h3 id="arange"><a href="#arange" class="headerlink" title="arange"></a>arange</h3></li>
+</ul>
+<hr>
+<p><code>arange</code>는 배열을 만들어주는 함수이다.<br>arange([시작],끝,[만큼 건너뜀])으로 작성 할 수 있으며 []안의 항목은 생략 할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arrange_array = np.arange(<span class="number">3</span>, <span class="number">13</span>, <span class="number">2</span>)</span><br><span class="line">arrange_array</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>array([ 3,  5,  7,  9, 11])
+</code></pre>
+<p>3부터 시작해서 12(13-1)까지 출력하며 2씩 건너뛰는 배열을 생성하는 <code>arange</code>예제이다.</p>
+<ul>
+<li><h3 id="zeros-ones"><a href="#zeros-ones" class="headerlink" title="zeros, ones"></a>zeros, ones</h3></li>
+</ul>
+<hr>
+<p><code>zeros</code>와 <code>ones</code>는 0또는 1로 초기화된 <code>shape</code>* 차원의 <code>ndarray</code>** 배열 객체를 반환한다.<br>두 함수 모두 객체 생성시 데이터 타입은 <code>float64</code>형식이다.<br><br><br><br>*shape : 행열의 차원<br>**ndarray :  N차원의 배열객체. 기존파이썬과는 다르게 ndarray는 오직 같은 종류의 데이터만을 배열에 담을 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zeros_array = np.zeros((<span class="number">3</span>,<span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(zeros_array)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Data Type is:&quot;</span>, zeros_array.dtype)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Data Shape is:&quot;</span>, zeros_array.shape)</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>[[0. 0.]
+ [0. 0.]
+ [0. 0.]]
+Data Type is: float64
+Data Shape is: (3, 2)
+</code></pre>
+<p>순서대로 배열, 데이터 타입, 데이터의 차원을 출력한다.<br><br><br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ones_array = np.ones((<span class="number">3</span>,<span class="number">4</span>), dtype=<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ones_array)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Data Type is:&quot;</span>, ones_array.dtype)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Data Shape is:&quot;</span>, ones_array.shape)</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>[[1 1 1 1]
+ [1 1 1 1]
+ [1 1 1 1]]
+Data Type is: int32
+Data Shape is: (3, 4)
+</code></pre>
+<p>같은 순서로 항목들을 출력했고 배열생성시 데이터 타입을 바꿀수 있음을 보여주는 예제이다.</p>
+<ul>
+<li><h3 id="reshape"><a href="#reshape" class="headerlink" title="reshape"></a>reshape</h3></li>
+</ul>
+<hr>
+<p><code>reshape</code>는 구조를 재배열해주는 함수이다. <code>배열명.reshape(차원, 차원)</code>으로 사용할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 위에서 만들어진 3 x 4 배열의 ones_array를 reshape하여 2 x 6로 재배열</span></span><br><span class="line">after_reshape = ones_array.reshape(<span class="number">2</span>,<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(after_reshape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Data Shape is:&quot;</span>, after_reshape.shape)</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>[[1 1 1 1 1 1]
+ [1 1 1 1 1 1]]
+Data Shape is: (2, 6)
+</code></pre>
+<p><code>reshape</code>를 통해서 3x4 배열을 2x6으로 재배열 해준 가장 기본적인 예제이다.</p>
+<p>재배열하려는 배열이 3x4 라면 3x4를 곱해서 나오는 값인 12의 인수들로 12의 결과가 나오는 배열((1,12), (2,6), (4,3))들로 바꿀 수 있으며, (2,2,3)등과 같은 3차원배열로도 재배열이 가능하다.</p>
+<ul>
+<li><h3 id="reshape의-값에-1을-넣는다면"><a href="#reshape의-값에-1을-넣는다면" class="headerlink" title="reshape의 값에 -1을 넣는다면?"></a>reshape의 값에 -1을 넣는다면?</h3></li>
+</ul>
+<hr>
+<p>그렇다면 <code>reshape</code>의 괄호 차원값에 -1을 넣는다면 어떻게될까?<br>다음 결과를 보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">after_reshape2= ones_array.reshape(-<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(after_reshape2)</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>[[1 1 1 1 1 1]
+ [1 1 1 1 1 1]]
+</code></pre>
+<p>-1을 작성한 곳에 12에서 나머지(두번째 값인 6)값을 보고 첫번째 값은 알아서 2로 지정이 된 것이다.<br><br><br><br>다음은 값이 -1 하나일 때의 예제이다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">after_reshape2= ones_array.reshape(-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(after_reshape2)</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>[1 1 1 1 1 1 1 1 1 1 1 1]
+</code></pre>
+<p>결과와 같이 1차원 배열로 바뀐다. 하지만 (12)일뿐, 2차원 배열인 (1,12)과는 같지 않다.</p>
+<h2 id="Numpy-인덱싱과-슬라이딩"><a href="#Numpy-인덱싱과-슬라이딩" class="headerlink" title="Numpy 인덱싱과 슬라이딩"></a>Numpy 인덱싱과 슬라이딩</h2><hr>
+<p><code>Numpy</code>의 배열에도 값을 추출 할 수 있게 인덱싱과 슬라이딩이 가능하다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_array2 = np.arange(start=<span class="number">3</span>,stop=<span class="number">30</span>,step=<span class="number">3</span>)</span><br><span class="line">my_array2 = my_array2.reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">my_array2[<span class="number">1</span>:<span class="number">3</span>,:]</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>array([[12, 15, 18],
+        [21, 24, 27]])
+</code></pre>
+<p>출력에서 첫번째 인자는 1에서 2(3-1)번째 까지의 배열을 출력하고, 두번째 인자인 :은 첫번째 인자에서 지목된 배열의 항목을 모두 출력하는 것이다.</p>
+<h2 id="Numpy-정렬"><a href="#Numpy-정렬" class="headerlink" title="Numpy 정렬"></a>Numpy 정렬</h2><hr>
+<p>여러 값이 모여있는 <code>array</code>인 만큼 정렬도 가능하다. 이 챕터에서는 오름,내림차순으로 정렬해주는 <code>sort()</code>, 값이 낮은 순서대로 인덱스를 배정해 배열을 출력해주는 <code>argsort()</code>가 있다.</p>
+<ul>
+<li><h3 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h3></li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">height_arr = np.array([<span class="number">174</span>, <span class="number">165</span>, <span class="number">180</span>, <span class="number">182</span>, <span class="number">168</span>])</span><br><span class="line">sorted_height_arr = np.sort(height_arr)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Height Matrix: &#x27;</span>, height_arr)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;np.sort() Matrix: &#x27;</span>, sorted_height_arr)</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>Height Matrix:  [174 165 180 182 168]
+np.sort() Matrix:  [165 168 174 180 182]
+</code></pre>
+<p>결과에서 보이다시피 <code>sort()</code>함수는 배열내의 값을 오름차순으로 정렬해준다.<br><br></p>
+<p>내림차순으로 정렬을 하고 싶다면 다음과 같이 하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">desc_sorted_height_arr = np.sort(height_arr)[::-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;np.sort()[::-1] : &#x27;</span>, desc_sorted_height_arr)</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>np.sort()[::-1] :  [182 180 174 168 165]
+</code></pre>
+<p>위처럼 정렬을 할 때 <code>sort()</code>의 뒷부분에 <code>[::-1]</code>을 붙여주면 된다.</p>
+<ul>
+<li><h3 id="argsort"><a href="#argsort" class="headerlink" title="argsort()"></a>argsort()</h3></li>
+</ul>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fives = np.array([<span class="number">10</span>, <span class="number">5</span>, <span class="number">15</span>, <span class="number">20</span>])</span><br><span class="line">fives_order = fives.argsort()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The original data&quot;</span>, fives)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The argsort(): &quot;</span>, fives_order)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The asending:&quot;</span>, fives[fives_order])</span><br></pre></td></tr></table></figure>
+<p>Output:  </p>
+<pre><code>The original data [10 5 15 20]
+The argsort():  [1 0 2 3]
+The asending: [ 5 10 15 20]
+</code></pre>
+<p>출력의 첫번째 줄은 가장 처음 입력했던 일반적인 배열이다.<br>두번째 줄은 오름차순으로 인덱스를 매긴 배열이며,<br>마지막은 두번째줄의 배열에 따라 첫번째줄의 결과인 배열을 정렬한 것이다.</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>NumPy 기본 다지기</p><p><a href="https://cincu4221.github.io/2021/11/06/NumPy-Basic-Grammar-1/">https://cincu4221.github.io/2021/11/06/NumPy-Basic-Grammar-1/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>WJ</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-11-06</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-11-06</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Python/">Python</a><a class="link-muted mr-2" rel="tag" href="/tags/Numpy/">Numpy</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/11/04/Markdown-Grammar/"><span class="level-item">마크다운(Markdown) 문법</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="WJ"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">WJ</p><p class="is-size-6 is-block">수업 일기장</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Ansan</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">12</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Git/"><span class="level-start"><span class="level-item">Git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/blog/"><span class="level-start"><span class="level-item">blog</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/pandas/"><span class="level-start"><span class="level-item">pandas</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-06T03:06:27.000Z">2021-11-06</time></p><p class="title"><a href="/2021/11/06/NumPy-Basic-Grammar-1/">NumPy 기본 다지기</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-04T07:55:59.000Z">2021-11-04</time></p><p class="title"><a href="/2021/11/04/Markdown-Grammar/">마크다운(Markdown) 문법</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-04T03:06:48.000Z">2021-11-04</time></p><p class="title"><a href="/2021/11/04/Decision_Tree/">결정 나무(Decision Tree) 간단 설명</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-03T03:23:18.000Z">2021-11-03</time></p><p class="title"><a href="/2021/11/03/python_visualiztion_basic_/">파이썬 시각화 기본</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T07:14:46.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/pandas_Basic_Grammar_1/">pandas 기본 문법</a></p><p class="categories"><a href="/categories/pandas/">pandas</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">November 2021</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">October 2021</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Data-Visualization/"><span class="tag">Data Visualization</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Decision-Tree/"><span class="tag">Decision Tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Git/"><span class="tag">Git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Install/"><span class="tag">Install</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Machine-Learning/"><span class="tag">Machine Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Numpy/"><span class="tag">Numpy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pandas/"><span class="tag">pandas</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="연습장" height="28"></a><p class="is-size-7"><span>&copy; 2021 WJ</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("kr");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
