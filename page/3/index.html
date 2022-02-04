@@ -3,7 +3,69 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
     
-        gtag('config', 'G-F7MSWFRZKP');</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="연습장" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Suche" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-19T07:01:16.000Z" title="2021. 11. 19. 오후 4:01:16">2021-11-19</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-11-24T08:21:12.065Z" title="2021. 11. 24. 오후 5:21:12">2021-11-24</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">8 minutes lesen (Über 1222 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/19/kaggle-2021survey-code-2/">2021 캐글 대회 코드 작성기 - 2</a></h1><div class="content"><h2 id="Q3-In-which-country-do-you-currently-reside"><a href="#Q3-In-which-country-do-you-currently-reside" class="headerlink" title="Q3. In which country do you currently reside?"></a>Q3. In which country do you currently reside?</h2><hr>
+        gtag('config', 'G-F7MSWFRZKP');</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="연습장" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-24T08:48:00.000Z" title="2021. 11. 24. 오후 5:48:00">2021-11-24</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-30T10:12:08.309Z" title="2021. 11. 30. 오후 7:12:08">2021-11-30</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">8 minutes read (About 1132 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/24/plotly-Bar-Chart-basic/">plotly를 사용하여 막대그래프 만들기</a></h1><div class="content"><p>캐글 대회에 참가하면서 파이썬 문법이나 plotly의 특성에 대해 구글링하는 시간이 훨씬 늘었다.<br>앞으로도 대회에 참가하거나 시각화를 할 때에 이렇게나 많은 특성을 모두 외울수는 없으니 구글링을 하게 될 텐데, 자주쓰는 속성이나 기본틀에 대해서는 포스팅을 해두고 바로바로 찾아보는것이 좋겠다는 생각이 들었다.</p>
+<p>그래서 이번 포스팅에서는 앞으로 자주 사용하게 될 차트 중 하나인 막대그래프의 기본 틀과 자주 사용되는 속성에 대해 포스팅 하려 한다.</p>
+<p>데이터는 <a target="_blank" rel="noopener" href="https://www.kaggle.com/c/kaggle-survey-2021/data">2021 Kaggle Machine Learning &amp; Data Science Survey</a> 대회의 데이터를 사용한다.</p>
+<h2 id="import-및-데이터-불러오기"><a href="#import-및-데이터-불러오기" class="headerlink" title="import 및 데이터 불러오기"></a>import 및 데이터 불러오기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> plotly.graph_objects <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> plotly.subplots <span class="keyword">import</span> make_subplots</span><br><span class="line"></span><br><span class="line">df21 = pd.read_csv(<span class="string">&#x27;../input/kaggle-survey-2021/kaggle_survey_2021_responses.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>필요한 라이브러리를 import 해주고 데이터를 불러와 저장해준다.<br>필자는 캐글노트북에서 작성하여 <code>data add</code> 기능으로 kaggle에 있는 데이터를 바로 불러왔지만 로컬이나 colab, jupyter등의 다른 노트북을 사용중이라면 데이터를 다운받은후 괄호안의 경로를 재설정해주어야 한다.</p>
+<h2 id="출력할-데이터-확인"><a href="#출력할-데이터-확인" class="headerlink" title="출력할 데이터 확인"></a>출력할 데이터 확인</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df21[<span class="number">0</span>:<span class="number">5</span>][Q1,Q14] <span class="comment"># Q1,Q14 항목의 값 0부터 4까지 출력</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">ㅤ</th>
+<th align="center">Q1</th>
+<th align="center">Q3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">What is your age (# years)?</td>
+<td align="center">In which country do you currently reside?</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">50-54</td>
+<td align="center">India</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">50-54</td>
+<td align="center">Indonesia</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">22-24</td>
+<td align="center">Pakistan</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">45-49</td>
+<td align="center">Mexico</td>
+</tr>
+</tbody></table>
+<p>이렇게 출력하거나</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df21[df21[<span class="string">&#x27;Q3&#x27;</span>] == <span class="string">&quot;South Korea&quot;</span>] <span class="comment"># Q3 항목의 값이 &quot;South Korea&quot;인 행의 데이터프레임 출력</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/plotly_Bar_Chart_basic/table-1.png" alt="조건을 지정해 데이터를 출력해냄"><br>위 코드처럼 어느 조건에 해당하는행을 출력 할 수도 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">KR_Age = df21[df21[<span class="string">&#x27;Q3&#x27;</span>] == <span class="string">&#x27;South Korea&#x27;</span>][<span class="string">&#x27;Q1&#x27;</span>].value_counts()</span><br><span class="line">JP_Age = df21[df21[<span class="string">&#x27;Q3&#x27;</span>] == <span class="string">&#x27;Japan&#x27;</span>][<span class="string">&#x27;Q1&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+<p>위 코드는 Q3(국가)이 South Korea인 행과 Japan인 행의 Q1(연령)값을 뽑아내는 코드로 이를 통해 그래프를 만들어 볼 것이다.</p>
+<h2 id="다중-차트-틀-만들기"><a href="#다중-차트-틀-만들기" class="headerlink" title="다중 차트 틀 만들기"></a>다중 차트 틀 만들기</h2><p>위에서 import한 <code>make_subplots</code>으로 차트여러개를 출력 할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig = make_subplots(rows=<span class="number">1</span>, cols=<span class="number">2</span>, specs=[[&#123;<span class="string">&#x27;type&#x27;</span>:<span class="string">&#x27;xy&#x27;</span>&#125;, &#123;<span class="string">&#x27;type&#x27;</span>:<span class="string">&#x27;xy&#x27;</span>&#125;]])</span><br></pre></td></tr></table></figure>
+<p>fig 객체를 생성해주고 차트를 1행, 2열로 만들어주는 코드이다.<br>막대그래프의 경우엔 <code>&#39;type&#39;:&#39;xy&#39;</code> 파이그래프의 경우엔 <code>&#39;type&#39;:&#39;domain&#39;</code>으로 할수있다.<br><code>specs</code>에서 중괄호는 차트한개를 나타내며 내부의 중괄호가 여러개라면 각각 행을 구분하는 용도로 쓰인다.  </p>
+<h2 id="각-속성으로-차트-그리기"><a href="#각-속성으로-차트-그리기" class="headerlink" title="각 속성으로 차트 그리기"></a>각 속성으로 차트 그리기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fig.add_trace(go.Bar(name=<span class="string">&#x27;Korea&#x27;</span>, x=KR_Age.index, y=KR_Age.values, marker_color=<span class="string">&#x27;red&#x27;</span>),<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">fig.add_trace(go.Bar(name=<span class="string">&#x27;Japan&#x27;</span>, x=JP_Age.index, y=JP_Age.values, marker_color=<span class="string">&#x27;blue&#x27;</span>),<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">fig.update_layout(barmode=<span class="string">&#x27;group&#x27;</span>, title_text=<span class="string">&#x27;2021, Korea and Japan age distribution&#x27;</span>, showlegend=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">fig.update_xaxes(title_text=<span class="string">&#x27;Korea Age distribution&#x27;</span>, row=<span class="number">1</span>, col=<span class="number">1</span>)</span><br><span class="line">fig.update_yaxes(title_text=<span class="string">&#x27;Counts&#x27;</span>, row=<span class="number">1</span>, col=<span class="number">1</span>)</span><br><span class="line">fig.update_xaxes(title_text=<span class="string">&#x27;Japan Age distribution&#x27;</span>, row=<span class="number">1</span>, col=<span class="number">2</span>)</span><br><span class="line">fig.update_yaxes(title_text=<span class="string">&#x27;Counts&#x27;</span>, row=<span class="number">1</span>, col=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/plotly_Bar_Chart_basic/Graph-1.png" alt="파라미터값을 바꾸어 그래프를 출력"><br>add_trace, update_layout 등의 파라미터(속성)값으로 그래프를 꾸미는 코드이다.  </p>
+<hr>
+<p><code>fig.add_trace(go.Bar(name=&#39;Korea&#39;, x=KR_Age.index, y=KR_Age.values, marker_color=&#39;red&#39;),1,1)</code>부터 살펴보면<br><code>go.Bar</code>는 막대그래프를 뜻한다, 각 파라미터를 살펴보면<br><code>name</code>는 그래프에 표현되는 항목의 이름,<br><code>x</code>는 그래프의 x축이 나타낼 항목,<br><code>y</code>는 그래프의 y축이 나타낼 값,<br><code>marker_color</code>은 그래프의 색을 표현하며<br>가장 끝의<code>1,1</code>는 위 항목이 표시될 그래프의 행,열을 뜻한다.(그러니 1번째 행 1번째 열의 그래프에 Korea 항목이 들어간다.)</p>
+<hr>
+<p><code>fig.update_layout(barmode=&#39;group&#39;, title_text=&#39;2021, Korea and Japan age distribution&#39;, showlegend=True)</code>도 뜯어보겠다.<br><code>barmode</code>는 한 그래프에 여러 항목이 들어있을 경우 어떻게 나타내는지에 대한 속성인데 대표적으로 <code>group</code>과<code>stack</code>이 있다.<br><code>title_text</code>는 제목, <code>showlegend</code>는 범례 표기 여부를 가리킨다.</p>
+<hr>
+<p>마지막의 <code>fig.show()</code>는 fig객체를 출력하는 코드이다.</p>
+<p>아래 References에 막대그래프의 파라미터가 정리되있는 링크를 걸어놓을테니 활용하여 다양하게 그래프를 만들어보자.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://plotly.com/python/bar-charts/">plotly bar chart tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://plotly.com/python/reference/bar/">plotly bar chart properties (bar traces)</a></li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-19T07:01:16.000Z" title="2021. 11. 19. 오후 4:01:16">2021-11-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-24T08:21:12.065Z" title="2021. 11. 24. 오후 5:21:12">2021-11-24</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">8 minutes read (About 1222 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/19/kaggle-2021survey-code-2/">2021 캐글 대회 코드 작성기 - 2</a></h1><div class="content"><h2 id="Q3-In-which-country-do-you-currently-reside"><a href="#Q3-In-which-country-do-you-currently-reside" class="headerlink" title="Q3. In which country do you currently reside?"></a>Q3. In which country do you currently reside?</h2><hr>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">years = [<span class="string">&#x27;2019&#x27;</span>, <span class="string">&#x27;2021&#x27;</span>]</span><br><span class="line">JP_country_count_19 = (df19[df19[<span class="string">&#x27;Q3&#x27;</span>] == <span class="string">&#x27;Japan&#x27;</span>][<span class="string">&#x27;Q3&#x27;</span>]).count()</span><br><span class="line">CN_country_count_19 = (df19[df19[<span class="string">&#x27;Q3&#x27;</span>] == <span class="string">&#x27;China&#x27;</span>][<span class="string">&#x27;Q3&#x27;</span>]).count()</span><br><span class="line">JP_country_count_21 = (df21[df21[<span class="string">&#x27;Q3&#x27;</span>] == <span class="string">&#x27;Japan&#x27;</span>][<span class="string">&#x27;Q3&#x27;</span>]).count()</span><br><span class="line">CN_country_count_21 = (df21[df21[<span class="string">&#x27;Q3&#x27;</span>] == <span class="string">&#x27;China&#x27;</span>][<span class="string">&#x27;Q3&#x27;</span>]).count()</span><br><span class="line"></span><br><span class="line">JP_country_count_19_21 = [JP_country_count_19, JP_country_count_21]</span><br><span class="line">CN_country_count_19_21 = [CN_country_count_19, CN_country_count_21]</span><br><span class="line"></span><br><span class="line">fig_country = go.Figure(data=[</span><br><span class="line">    go.Bar(name=<span class="string">&#x27;Japan&#x27;</span>, x=years, y=JP_country_count_19_21, marker_color=JP_colors[<span class="number">0</span>]),</span><br><span class="line">    go.Bar(name=<span class="string">&#x27;China&#x27;</span>, x=years, y=CN_country_count_19_21, marker_color=CN_colors[<span class="number">1</span>])</span><br><span class="line">])</span><br><span class="line">fig_country.update_layout(</span><br><span class="line">    barmode=<span class="string">&#x27;group&#x27;</span>,</span><br><span class="line">    title_text=<span class="string">&#x27;2019 &amp; 2021, the number of Kaggler living in Japan and China&#x27;</span>,</span><br><span class="line">    xaxis_title=<span class="string">&#x27;Years&#x27;</span>,</span><br><span class="line">    yaxis_title=<span class="string">&#x27;Counts&#x27;</span></span><br><span class="line">)</span><br><span class="line">fig_country.show()</span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/kaggle_graph/Q3gragh.png" alt="연도별 일본과 중국의 캐글러 수">  </p>
@@ -18,7 +80,7 @@
 
 <p><img src="/images/kaggle_graph/Q5gragh.png" alt="연도별 일본과 중국의 머신러닝 프레임워크 사용 그래프"></p>
 <p>이번 질문에대한 답도 비슷하다. 그래프는 연도로 나누고 각각의 x축에는 사용하는 머신러닝 프레임워크, y축에는 그 수가 표기되어 얼마나 많은 캐글러가 머신러닝 프레임워크를 사용하지는 나타낸다.<br>각 년도의 차이점은 (프레임워크의 사용자의 수는 물론이거니와)프레임워크의 종류가 19년도에 비해 21년에 약증했다는 점이 있고, 특이점이라면 21년 일본의 사이킷런<sup>Scikit-learn</sup> 사용자의 수가 급증했다는 점이 있다.</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-17T06:07:03.000Z" title="2021. 11. 17. 오후 3:07:03">2021-11-17</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-12-09T11:36:19.851Z" title="2021. 12. 9. 오후 8:36:19">2021-12-09</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">8 minutes lesen (Über 1220 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/17/kaggle-2021survey-code-1/">2021 캐글 대회 코드 작성기 - 1</a></h1><div class="content"><p>파이썬을 배운지 며칠 되지 않아 kaggle이라는 예측모델 및 분석대회 플랫폼의 데이터 분석 대회에 참가하게 되었다.<br>주제는 2021년 캐글러<sup>kaggler</sup>들에게 설문조사이며, 그 설문조사 데이터셋을 바탕으로 참가자가 분석을 하여 참가자만의 주제에 그래프와 수치로 답을 찾아내는 대회이다.</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-17T06:07:03.000Z" title="2021. 11. 17. 오후 3:07:03">2021-11-17</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-12-09T11:36:19.851Z" title="2021. 12. 9. 오후 8:36:19">2021-12-09</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">8 minutes read (About 1220 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/17/kaggle-2021survey-code-1/">2021 캐글 대회 코드 작성기 - 1</a></h1><div class="content"><p>파이썬을 배운지 며칠 되지 않아 kaggle이라는 예측모델 및 분석대회 플랫폼의 데이터 분석 대회에 참가하게 되었다.<br>주제는 2021년 캐글러<sup>kaggler</sup>들에게 설문조사이며, 그 설문조사 데이터셋을 바탕으로 참가자가 분석을 하여 참가자만의 주제에 그래프와 수치로 답을 찾아내는 대회이다.</p>
 <p>데이터셋에 있는 캐글러의 수는 19년 19717명, 21년 25974명, 직업은 데이터사이언스, 데이터 엔지니어부터 학생까지 다양하며, 나이, 학력, 국적, 라이브러리, 언어 등 매우 다양한 항목들이 있다.  </p>
 <p>우리 조에서 처음으로 선정하려 했던 주제는 한국, 일본, 중국의 캐글러의 트렌드변화로 하려 했으나, 중국, 일본에 비해 데이터가 턱없이 부족해 비교가 무의미한 수준이었기에 캐글러의 수가 비슷한 두 나라인 중국과 일본로 선정했다.(의외로 중국의 캐글러 절대적인 수가 인구에 비해 상당히 적어 일본보다 조금 적은편이였다.)</p>
 <h2 id="import-Kaggle-notebook"><a href="#import-Kaggle-notebook" class="headerlink" title="import(Kaggle notebook)"></a>import(Kaggle notebook)</h2><hr>
@@ -39,7 +101,7 @@
 <p><img src="/images/kaggle_graph/Q2gragh.png" alt="일본, 중국 캐글러의 성별분포">  </p>
 <p>두번쨰 질문에 답하기 위해 일본과 중국의 캐글러 성별분포를 도넛모양으로 나타낸 그래프이다.<br>각각의 그래프는 국가,년도(2019, 2021)별로 각각 나누었고 그래프의 항목은<br><code>Man</code><br><code>Woman</code><br><code>Prefer not to say</code><br><code>Nonbinary</code><br><code>Prefer to self-describe</code><br>이렇게 다섯가지로 나누었다.</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://plotly.com/python/bar-charts/">plotly bar chart tutorial</a><br><a target="_blank" rel="noopener" href="https://plotly.com/python/reference/bar/">plotly bar chart properties (bar traces)</a><br><a target="_blank" rel="noopener" href="https://plotly.com/python/pie-charts/">plotly pie chart tutorial</a><br><a target="_blank" rel="noopener" href="https://plotly.com/python/reference/pie/">plotly pie chart properties (pie traces)</a></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-12T03:26:10.000Z" title="2021. 11. 12. 오후 12:26:10">2021-11-12</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2022-01-30T13:53:06.266Z" title="2022. 1. 30. 오후 10:53:06">2022-01-30</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">9 minutes lesen (Über 1314 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/12/scatterPlot-boxPlot/">산점도(scatter plot)와 박스플롯(box plot)</a></h1><div class="content"><h2 id="산점도-scatter-plot"><a href="#산점도-scatter-plot" class="headerlink" title="산점도(scatter plot)"></a>산점도(scatter plot)</h2><h3 id="산점도란"><a href="#산점도란" class="headerlink" title="산점도란?"></a>산점도란?</h3><hr>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-12T03:26:10.000Z" title="2021. 11. 12. 오후 12:26:10">2021-11-12</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-01-30T13:53:06.266Z" title="2022. 1. 30. 오후 10:53:06">2022-01-30</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">9 minutes read (About 1314 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/12/scatterPlot-boxPlot/">산점도(scatter plot)와 박스플롯(box plot)</a></h1><div class="content"><h2 id="산점도-scatter-plot"><a href="#산점도-scatter-plot" class="headerlink" title="산점도(scatter plot)"></a>산점도(scatter plot)</h2><h3 id="산점도란"><a href="#산점도란" class="headerlink" title="산점도란?"></a>산점도란?</h3><hr>
 <p><img src="/images/Scatterplot_boxplot/Scatter_plot.png" alt="산점도">  </p>
 <p>산점도, 산포도<sup>scatter plot</sup>는 직교좌표계를 이용해 좌표상의 점들을 표시함으로써 두 개 변수 간의 관계를 나타내는 그래프 방법이다.<br>도표 위에  두 변수 X와 Y값이 만나는 지점을 표시한 그림. 이 그림을 통해 두 변수 사이의 관계를 알 수 있다.<br><br><br><br></p>
 <h3 id="언제-사용되는가"><a href="#언제-사용되는가" class="headerlink" title="언제 사용되는가??"></a>언제 사용되는가??</h3><hr>
@@ -137,7 +199,7 @@
 
 <p><br><br><br></p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://hogni.tistory.com/84">산점도 그리기</a><br><a target="_blank" rel="noopener" href="https://plotly.com/python/marker-style/">산점도 마커 모양</a><br><a target="_blank" rel="noopener" href="https://ko.wikipedia.org/wiki/%EC%82%B0%EC%A0%90%EB%8F%84">위키백과 - 산점도</a><br><a target="_blank" rel="noopener" href="https://ko.wikipedia.org/wiki/%EC%83%81%EC%9E%90_%EC%88%98%EC%97%BC_%EA%B7%B8%EB%A6%BC">위키백과 - 상자 수염 그림</a><br><a target="_blank" rel="noopener" href="https://codedragon.tistory.com/7012">박스플롯 및 요소 설명</a></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-10T06:12:27.000Z" title="2021. 11. 10. 오후 3:12:27">2021-11-10</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-11-12T06:47:11.762Z" title="2021. 11. 12. 오후 3:47:11">2021-11-12</time></span><span class="level-item"><a class="link-muted" href="/categories/Python/">Python</a></span><span class="level-item">11 minutes lesen (Über 1685 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/10/Python-UserDefinedFunctions/">파이썬(Python) 사용자 지정 함수</a></h1><div class="content"><h2 id="사용자-지정-함수란"><a href="#사용자-지정-함수란" class="headerlink" title="사용자 지정 함수란?"></a>사용자 지정 함수란?</h2><hr>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-10T06:12:27.000Z" title="2021. 11. 10. 오후 3:12:27">2021-11-10</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-12T06:47:11.762Z" title="2021. 11. 12. 오후 3:47:11">2021-11-12</time></span><span class="level-item"><a class="link-muted" href="/categories/Python/">Python</a></span><span class="level-item">11 minutes read (About 1685 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/10/Python-UserDefinedFunctions/">파이썬(Python) 사용자 지정 함수</a></h1><div class="content"><h2 id="사용자-지정-함수란"><a href="#사용자-지정-함수란" class="headerlink" title="사용자 지정 함수란?"></a>사용자 지정 함수란?</h2><hr>
 <p>파이썬에서(다른프로그래밍 언어, 스크립트 언어에서도) 함수란, 소프르웨어에서 특정 동작을 수행하는 일정 코드부분을 의미한다.</p>
 <p>하나의 큰 프로그램을 여러부분으로 나누어주기 때문에 같은 함수를 여러 상황에서 여러차례 호출할 수 있고, 일부분을 수정하기 쉽다는 장점을 지닌다.  </p>
 <p>파이썬에서는 미리 정의 되어있는 built in 함수(내장함수)가 있고. 또, 사용자가 필요에 의해 정의를 한 사용자 지정 함수가 존재한다.</p>
@@ -235,7 +297,7 @@
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://djangojeng-e.github.io/2020/11/08/Python-%EA%B8%B0%EC%B4%88-17%ED%8E%B8-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%ED%95%A8%EC%88%98/">https://djangojeng-e.github.io</a></li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-08T05:50:50.000Z" title="2021. 11. 8. 오후 2:50:50">2021-11-08</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-11-12T06:47:11.795Z" title="2021. 11. 12. 오후 3:47:11">2021-11-12</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">13 minutes lesen (Über 1883 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/08/Kaggle_Data_Visualization-1/">캐글 데이터 시각화 해석-1</a></h1><div class="content"><details> 
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-08T05:50:50.000Z" title="2021. 11. 8. 오후 2:50:50">2021-11-08</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-12T06:47:11.795Z" title="2021. 11. 12. 오후 3:47:11">2021-11-12</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">13 minutes read (About 1883 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/08/Kaggle_Data_Visualization-1/">캐글 데이터 시각화 해석-1</a></h1><div class="content"><details> 
 <summary>임포트 및 데이터프레임 추가</summary>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This Python 3 environment comes with many helpful analytics libraries installed</span></span><br><span class="line"><span class="comment"># It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python</span></span><br><span class="line"><span class="comment"># For example, here&#x27;s several helpful packages to load</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np <span class="comment"># linear algebra</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment"># data processing, CSV file I/O (e.g. pd.read_csv)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Input data files are available in the read-only &quot;../input/&quot; directory</span></span><br><span class="line"><span class="comment"># For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> dirname, _, filenames <span class="keyword">in</span> os.walk(<span class="string">&#x27;/kaggle/input&#x27;</span>):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        <span class="built_in">print</span>(os.path.join(dirname, filename))</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using &quot;Save &amp; Run All&quot; </span></span><br><span class="line"><span class="comment"># You can also write temporary files to /kaggle/temp/, but they won&#x27;t be saved outside of the current session</span></span><br></pre></td></tr></table></figure>
@@ -312,7 +374,7 @@
 <p><code>print(type(데이터))</code><br>-&gt; 데이터의 타입을 출력한다</p>
 <p><code>데이터.head()</code>,<code>데이터.tail()</code><br>-&gt; 데이터를 인덱스 순으로 출력한다. <strong>head</strong>는 처음부터 끝까지, <strong>tail</strong>은 반대로 출력하며 괄호안에 숫자를 입력하면 숫자만큼 출력한다.  </p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html#id0">go.Figure() properties</a><br><a target="_blank" rel="noopener" href="https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html#plotly.graph_objects.Figure.update_traces">update_traces() properties</a><br><a target="_blank" rel="noopener" href="https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html#plotly.graph_objects.Figure.update_layout">update_layout() properties</a><br><a target="_blank" rel="noopener" href="https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html#plotly.graph_objects.Figure.show">show() properties</a><br><a target="_blank" rel="noopener" href="https://plotly.com/python-api-reference/generated/plotly.graph_objects.Bar.html">go.Bar() properties</a>  </p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-06T03:06:27.000Z" title="2021. 11. 6. 오후 12:06:27">2021-11-06</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-11-11T07:05:07.183Z" title="2021. 11. 11. 오후 4:05:07">2021-11-11</time></span><span class="level-item">11 minutes lesen (Über 1722 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/06/NumPy-Basic-Grammar-1/">NumPy 기본 다지기</a></h1><div class="content"><h2 id="Numpy란-무엇인가"><a href="#Numpy란-무엇인가" class="headerlink" title="Numpy란 무엇인가?"></a>Numpy란 무엇인가?</h2><p><img src="/images/Numpy_Symbol.png" alt="Numpy_Symbol"><br><code>Numpy</code>는 상당부분 C언어로 작성된 파이썬 라이브러리이다. 기본적으로 <code>array</code>라는 자료를 생성하고 이를 바탕으로 색인, 처리, 연산 등을 하는 기능을 수행한다. 물론 C언어로 작성되었기 때문에 속도도 꽤나 빠른편이다.</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-06T03:06:27.000Z" title="2021. 11. 6. 오후 12:06:27">2021-11-06</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-11T07:05:07.183Z" title="2021. 11. 11. 오후 4:05:07">2021-11-11</time></span><span class="level-item">11 minutes read (About 1722 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/06/NumPy-Basic-Grammar-1/">NumPy 기본 다지기</a></h1><div class="content"><h2 id="Numpy란-무엇인가"><a href="#Numpy란-무엇인가" class="headerlink" title="Numpy란 무엇인가?"></a>Numpy란 무엇인가?</h2><p><img src="/images/Numpy_Symbol.png" alt="Numpy_Symbol"><br><code>Numpy</code>는 상당부분 C언어로 작성된 파이썬 라이브러리이다. 기본적으로 <code>array</code>라는 자료를 생성하고 이를 바탕으로 색인, 처리, 연산 등을 하는 기능을 수행한다. 물론 C언어로 작성되었기 때문에 속도도 꽤나 빠른편이다.</p>
 <h2 id="Numpy의-기본"><a href="#Numpy의-기본" class="headerlink" title="Numpy의 기본"></a>Numpy의 기본</h2><h3 id="Numpy-불러오기"><a href="#Numpy-불러오기" class="headerlink" title="Numpy 불러오기"></a>Numpy 불러오기</h3><hr>
 <p><code>Numpy</code>를 사용하기 위해서는 먼저 임포트시켜줘야 한다.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
@@ -451,7 +513,7 @@ The argsort():  [1 0 2 3]
 The asending: [ 5 10 15 20]
 </code></pre>
 <p>출력의 첫번째 줄은 가장 처음 입력했던 일반적인 배열이다.<br>두번째 줄은 오름차순으로 인덱스를 매긴 배열이며,<br>마지막은 두번째줄의 배열에 따라 첫번째줄의 결과인 배열을 정렬한 것이다.</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-04T07:55:59.000Z" title="2021. 11. 4. 오후 4:55:59">2021-11-04</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-11-22T05:36:12.542Z" title="2021. 11. 22. 오후 2:36:12">2021-11-22</time></span><span class="level-item"><a class="link-muted" href="/categories/Markdown/">Markdown</a></span><span class="level-item">5 minutes lesen (Über 815 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/04/Markdown-Grammar/">마크다운(Markdown) 문법</a></h1><div class="content"><p>지금 당장만 해도 이 글을 마크다운으로 작성하고 있는 나는 HTML를 접해보긴 했지만 자유자재로 쓸 수 있는정도는 아니였기에 깃허브 블로그를 시작하면서 마크다운의 문법에 대해 알아야 할 필요가 생겼다.  </p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-04T07:55:59.000Z" title="2021. 11. 4. 오후 4:55:59">2021-11-04</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-22T05:36:12.542Z" title="2021. 11. 22. 오후 2:36:12">2021-11-22</time></span><span class="level-item"><a class="link-muted" href="/categories/Markdown/">Markdown</a></span><span class="level-item">5 minutes read (About 815 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/04/Markdown-Grammar/">마크다운(Markdown) 문법</a></h1><div class="content"><p>지금 당장만 해도 이 글을 마크다운으로 작성하고 있는 나는 HTML를 접해보긴 했지만 자유자재로 쓸 수 있는정도는 아니였기에 깃허브 블로그를 시작하면서 마크다운의 문법에 대해 알아야 할 필요가 생겼다.  </p>
 <p>다른 포스트들도 마찬가지지만 더욱 이 포스트는 자주 찾아 봐야 할 것 같기에 문법만을 기록하며, 접기를 최대한 지양한다.</p>
 <p>각 챕터의 위쪽은 코드 그 아래는 출력이다.</p>
 <h2 id="마크다운-문법"><a href="#마크다운-문법" class="headerlink" title="마크다운 문법"></a>마크다운 문법</h2><hr>
@@ -527,7 +589,7 @@ The asending: [ 5 10 15 20]
 <li>순서 없는 리스트</li>
 </ul>
 <p>앞으로 계속 추가할것</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-04T03:06:48.000Z" title="2021. 11. 4. 오후 12:06:48">2021-11-04</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-11-08T09:35:27.381Z" title="2021. 11. 8. 오후 6:35:27">2021-11-08</time></span><span class="level-item">5 minutes lesen (Über 776 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/04/Decision_Tree/">결정 나무(Decision Tree) 간단 설명</a></h1><div class="content"><h2 id="결정-나무란"><a href="#결정-나무란" class="headerlink" title="결정 나무란?"></a>결정 나무란?</h2><hr>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-04T03:06:48.000Z" title="2021. 11. 4. 오후 12:06:48">2021-11-04</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-08T09:35:27.381Z" title="2021. 11. 8. 오후 6:35:27">2021-11-08</time></span><span class="level-item">5 minutes read (About 776 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/04/Decision_Tree/">결정 나무(Decision Tree) 간단 설명</a></h1><div class="content"><h2 id="결정-나무란"><a href="#결정-나무란" class="headerlink" title="결정 나무란?"></a>결정 나무란?</h2><hr>
 <p><strong>결정 나무</strong> <sup>Decision Tree</sup> 는 분류와 회귀 문제에 널리 사용하는 데이터마이닝 기법이다. 결정 나무는 결정을 하기위해 예/아니오 질문을 연속해가며 학습한다.  </p>
 <p><a target="_blank" rel="noopener" href="https://youtu.be/n0p0120Gxqk">결정나무 간단설명영상</a><br><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/tree.html#classification">결정나무 사이킷런 튜토리얼</a></p>
 <h3 id="결정나무의-의사결정-과정"><a href="#결정나무의-의사결정-과정" class="headerlink" title="결정나무의 의사결정 과정"></a>결정나무의 의사결정 과정</h3><hr>
@@ -604,7 +666,7 @@ The asending: [ 5 10 15 20]
 <li><a target="_blank" rel="noopener" href="https://inuplace.tistory.com/548">https://inuplace.tistory.com/548</a></li>
 <li><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/tree.html#classification">https://scikit-learn.org/stable/modules/tree.html#classification</a></li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-03T03:23:18.000Z" title="2021. 11. 3. 오후 12:23:18">2021-11-03</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-11-12T06:47:11.704Z" title="2021. 11. 12. 오후 3:47:11">2021-11-12</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">37 minutes lesen (Über 5510 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/03/python_visualization_basic_/">파이썬 시각화 기본</a></h1><div class="content"><h2 id="파이썬-시각화의-기본-형태들"><a href="#파이썬-시각화의-기본-형태들" class="headerlink" title="파이썬 시각화의 기본 형태들"></a>파이썬 시각화의 기본 형태들</h2><hr>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-03T03:23:18.000Z" title="2021. 11. 3. 오후 12:23:18">2021-11-03</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-12T06:47:11.704Z" title="2021. 11. 12. 오후 3:47:11">2021-11-12</time></span><span class="level-item"><a class="link-muted" href="/categories/Data-Visualization/">Data Visualization</a></span><span class="level-item">37 minutes read (About 5510 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/03/python_visualization_basic_/">파이썬 시각화 기본</a></h1><div class="content"><h2 id="파이썬-시각화의-기본-형태들"><a href="#파이썬-시각화의-기본-형태들" class="headerlink" title="파이썬 시각화의 기본 형태들"></a>파이썬 시각화의 기본 형태들</h2><hr>
 <ul>
 <li>선 그래프로 시각화하기<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">dates = [</span><br><span class="line">    <span class="string">&#x27;2021-01-01&#x27;</span>, <span class="string">&#x27;2021-01-02&#x27;</span>, <span class="string">&#x27;2021-01-03&#x27;</span>, <span class="string">&#x27;2021-01-04&#x27;</span>, <span class="string">&#x27;2021-01-05&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;2021-01-06&#x27;</span>, <span class="string">&#x27;2021-01-07&#x27;</span>, <span class="string">&#x27;2021-01-08&#x27;</span>, <span class="string">&#x27;2021-01-09&#x27;</span>, <span class="string">&#x27;2021-01-10&#x27;</span></span><br><span class="line">]</span><br><span class="line">min_temperature = [<span class="number">20.7</span>, <span class="number">17.9</span>, <span class="number">18.8</span>, <span class="number">14.6</span>, <span class="number">15.8</span>, <span class="number">15.8</span>, <span class="number">15.8</span>, <span class="number">17.4</span>, <span class="number">21.8</span>, <span class="number">20.0</span>]</span><br><span class="line">max_temperature = [<span class="number">34.7</span>, <span class="number">28.9</span>, <span class="number">31.8</span>, <span class="number">25.6</span>, <span class="number">28.8</span>, <span class="number">21.8</span>, <span class="number">22.8</span>, <span class="number">28.4</span>, <span class="number">30.8</span>, <span class="number">32.0</span>]</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(dates, min_temperature, label = <span class="string">&quot;Min Temp&quot;</span>)</span><br><span class="line">ax.plot(dates, max_temperature, label = <span class="string">&quot;Max Temp&quot;</span>)</span><br><span class="line">ax.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -1415,672 +1477,26 @@ Text(0, 0, &#39;Sat&#39;)
 Text(0, 0, &#39;Sun&#39;)
 </code></pre>
 <p><img src="/images/python_visualiztion_basic_/output_67_1.png" alt="png"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Gepostet vor&nbsp;<time dateTime="2021-11-02T07:14:46.000Z" title="2021. 11. 2. 오후 4:14:46">2021-11-02</time></span><span class="level-item">Aktualisiert vor&nbsp;<time dateTime="2021-11-12T06:47:11.744Z" title="2021. 11. 12. 오후 3:47:11">2021-11-12</time></span><span class="level-item"><a class="link-muted" href="/categories/pandas/">pandas</a></span><span class="level-item">8 minutes lesen (Über 1239 Wörter)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/02/pandas_Basic_Grammar_1/">pandas 기본 문법</a></h1><div class="content"><h2 id="DataFrame-생성-방법"><a href="#DataFrame-생성-방법" class="headerlink" title="DataFrame 생성 방법"></a>DataFrame 생성 방법</h2><hr>
-<ul>
-<li><h3 id="list이용"><a href="#list이용" class="headerlink" title="list이용"></a>list이용</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">frame = pd.DataFrame([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br><span class="line">frame</span><br></pre></td></tr></table></figure></li>
-</ul>
-<details> 
-<summary>출력</summary>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-</details>
-
-
-<ul>
-<li><h3 id="Dictionary-이용"><a href="#Dictionary-이용" class="headerlink" title="Dictionary 이용"></a>Dictionary 이용</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span> : [<span class="number">20</span>,<span class="number">39</span>,<span class="number">41</span>],</span><br><span class="line">    <span class="string">&#x27;height&#x27;</span> : [<span class="number">176</span>, <span class="number">182</span>, <span class="number">180</span>],</span><br><span class="line">    <span class="string">&#x27;weight&#x27;</span> : [<span class="number">73</span>, <span class="number">78</span>, <span class="number">69</span>]</span><br><span class="line">&#125;</span><br><span class="line">indexName = [<span class="string">&#x27;사람1&#x27;</span>, <span class="string">&#x27;사람2&#x27;</span>, <span class="string">&#x27;사람3&#x27;</span>]</span><br><span class="line"></span><br><span class="line">frame = pd.DataFrame(data, index = indexName)</span><br><span class="line">frame</span><br></pre></td></tr></table></figure></li>
-</ul>
-<details> 
-<summary>출력</summary>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>height</th>
-      <th>weight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>사람1</th>
-      <td>20</td>
-      <td>176</td>
-      <td>73</td>
-    </tr>
-    <tr>
-      <th>사람2</th>
-      <td>39</td>
-      <td>182</td>
-      <td>78</td>
-    </tr>
-    <tr>
-      <th>사람3</th>
-      <td>41</td>
-      <td>180</td>
-      <td>69</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-</details>
-
-
-<h2 id="Sample-Dataset-가져오기"><a href="#Sample-Dataset-가져오기" class="headerlink" title="Sample Dataset 가져오기"></a>Sample Dataset 가져오기</h2><hr>
-<p>위처럼 직접 <code>DataFrame</code>을 만드는 것이 아닌 제공하는 <code>Dataset</code>을 직접 가져오는 방법도 있다.<br><code>Dataset</code>을 가져오는 방법은 다음과 같다.</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/mwaskom/seaborn-data">Dataset Github</a>에 접속하고 가져오고싶은 데이터셋을 고른다.</li>
-<li>예를들어 <code>flights.csv</code> 를 가져오고 싶다면<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">flights = sns.load_dataset(<span class="string">&quot;flights&quot;</span>) <span class="comment">#여기까지가 가져오기</span></span><br><span class="line">flights.head(<span class="number">5</span>) <span class="comment"># 다섯번째 행의 데이터까지만 출력</span></span><br><span class="line">flights[<span class="string">&quot;year&quot;</span>] <span class="comment"># &#x27;year&#x27;열만 출력</span></span><br></pre></td></tr></table></figure>
-위와 같이 제공되는 데이터셋을 가져올 수 있다.</li>
-</ol>
-<h2 id="DataFrame-조회-방법"><a href="#DataFrame-조회-방법" class="headerlink" title="DataFrame 조회 방법"></a>DataFrame 조회 방법</h2><hr>
-<h3 id="기본적인-조회-방법"><a href="#기본적인-조회-방법" class="headerlink" title="기본적인 조회 방법"></a>기본적인 조회 방법</h3><p><code>DataFrame</code>의 기본적인 조회 방법은 다음과 같다.</p>
-<ul>
-<li><h4 id="head"><a href="#head" class="headerlink" title=".head()"></a>.head()</h4></li>
-</ul>
-<hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 위에서 가져온 데이터셋 flights를 사용</span></span><br><span class="line">flights.head() <span class="comment"># 데이터프레임의 가장 첫부분부터 표시</span></span><br></pre></td></tr></table></figure>
-
-
-<details> 
-<summary>출력</summary>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>passengers</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1949</td>
-      <td>Jan</td>
-      <td>112</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1949</td>
-      <td>Feb</td>
-      <td>118</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1949</td>
-      <td>Mar</td>
-      <td>132</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1949</td>
-      <td>Apr</td>
-      <td>129</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1949</td>
-      <td>May</td>
-      <td>121</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-</details>  
-
-
-
-<p>이 때 <code>.head()</code>의 괄호 안에 숫자가 있다면 그 수의 개수만큼 데이터가 출력된다.</p>
-<ul>
-<li><h4 id="tail"><a href="#tail" class="headerlink" title=".tail()"></a>.tail()</h4></li>
-</ul>
-<hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flights.tail() <span class="comment">#데이터프레임의 가장 뒷부분부터 표시</span></span><br></pre></td></tr></table></figure>
-
-
-<details> 
-<summary>출력</summary>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>passengers</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>139</th>
-      <td>1960</td>
-      <td>Aug</td>
-      <td>606</td>
-    </tr>
-    <tr>
-      <th>140</th>
-      <td>1960</td>
-      <td>Sep</td>
-      <td>508</td>
-    </tr>
-    <tr>
-      <th>141</th>
-      <td>1960</td>
-      <td>Oct</td>
-      <td>461</td>
-    </tr>
-    <tr>
-      <th>142</th>
-      <td>1960</td>
-      <td>Nov</td>
-      <td>390</td>
-    </tr>
-    <tr>
-      <th>143</th>
-      <td>1960</td>
-      <td>Dec</td>
-      <td>432</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-</details>  
-
-
-
-<p><code>.tail()</code>역시 마찬가지로 괄호안에 숫자가 있다면 수의 개수만큼 데이터가 출력된다.</p>
-<ul>
-<li><h4 id="index"><a href="#index" class="headerlink" title=".index"></a>.index</h4></li>
-</ul>
-<hr>
-<p>데이터프레임의 인덱스를 표시하는 방법도 있다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flights.index</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>RangeIndex(start=0, stop=144, step=1)
-</code></pre>
-<h3 id="열-Column-조회-방법"><a href="#열-Column-조회-방법" class="headerlink" title="열(Column) 조회 방법"></a>열(Column) 조회 방법</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#열(Column) 조회</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;* 열 조회 - 1&quot;</span>)</span><br><span class="line"><span class="built_in">print</span> (frame[<span class="string">&#x27;age&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;* 열 조회 - 2&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(frame.age)</span><br><span class="line"></span><br><span class="line"><span class="comment">#특정 열의 특정 값을 조회하고 싶을때</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;* 특정 열 의 특정 값 조회&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(frame[<span class="string">&#x27;age&#x27;</span>][<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(frame.height[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
-<details> 
-<summary>출력</summary>
-
-<pre><code>* 열 조회 - 1
-사람1    20
-사람2    39
-사람3    41
-Name: age, dtype: int64
-* 열 조회 - 2
-사람1    20
-사람2    39
-사람3    41
-Name: age, dtype: int64
-* 특정 열 의 특정 값 조회
-39
-180
-</code></pre>
-</details>
-
-<h3 id="행-Row-조회"><a href="#행-Row-조회" class="headerlink" title="행(Row) 조회"></a>행(Row) 조회</h3><p>행 조회는 열 조회와 조금 다르게 <code>loc</code>와 <code>iloc</code>를 사용해서 조회 할 수 있다.<br>여기서 <code>loc</code>는 사람이 읽을 수 있는 라벨 값으로 특정 값들을 골라오는 방법이고,<br><code>iloc</code>는 행이나 칼럼의 순서를 나타내는 정수로 특정 값을 추출하는 방법이다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#행(Row) 조회 (loc)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;* loc 특정 행 조회&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(frame.loc[<span class="string">&#x27;사람1&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(frame.loc[0]) - 조건이 정수이므로 조회 불가</span></span><br></pre></td></tr></table></figure>
-<details> 
-<summary>출력</summary>
-
-<pre><code>* 특정 행 조회
-age        20
-height    176
-weight     73
-Name: 사람1, dtype: int64
-loc를 Seq로 조회할 경우
-</code></pre>
-</details>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#행(Row) 조회 (iloc)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;* iloc 특정 행 조회&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(frame.iloc[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(frame.iloc[&#x27;사람1&#x27;]) - 조건이 정수가 아니므로 조회 불가</span></span><br></pre></td></tr></table></figure>
-<details> 
-<summary>출력</summary>
-
-<pre><code>* iloc 특정 행 조회
-age        20
-height    176
-weight     73
-Name: 사람1, dtype: int64
-</code></pre>
-</details>
-
-<h2 id="DataFrame-수정-방법"><a href="#DataFrame-수정-방법" class="headerlink" title="DataFrame 수정 방법"></a>DataFrame 수정 방법</h2><hr>
-<h3 id="열-Column-추가하기"><a href="#열-Column-추가하기" class="headerlink" title="열(Column) 추가하기"></a>열(Column) 추가하기</h3><p>gender 라는 컬럼을 추가합니다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame_add_col = pd .DataFrame(frame,columns= [<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;height&#x27;</span>,<span class="string">&#x27;weight&#x27;</span>,<span class="string">&#x27;gender&#x27;</span>])</span><br><span class="line">frame_add_col</span><br></pre></td></tr></table></figure>
-
-
-<details> 
-<summary>출력</summary>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>gender</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>사람1</th>
-      <td>20</td>
-      <td>176</td>
-      <td>73</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>사람2</th>
-      <td>39</td>
-      <td>182</td>
-      <td>78</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>사람3</th>
-      <td>41</td>
-      <td>180</td>
-      <td>69</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-</details>  
-
-
-<p>컬럼이 추가되었고 어떠한 값도 넣어주지 않았으므로 NaN 값이 출력되고있다.<br>이제 데이터를 입력해준다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame_add_col[<span class="string">&#x27;gender&#x27;</span>] = [<span class="string">&#x27;male&#x27;</span>, <span class="string">&#x27;male&#x27;</span>, <span class="string">&#x27;female&#x27;</span>]</span><br><span class="line">frame_add_col</span><br></pre></td></tr></table></figure>
-
-
-<details> 
-<summary>출력</summary>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>gender</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>사람1</th>
-      <td>20</td>
-      <td>176</td>
-      <td>73</td>
-      <td>male</td>
-    </tr>
-    <tr>
-      <th>사람2</th>
-      <td>39</td>
-      <td>182</td>
-      <td>78</td>
-      <td>male</td>
-    </tr>
-    <tr>
-      <th>사람3</th>
-      <td>41</td>
-      <td>180</td>
-      <td>69</td>
-      <td>female</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-</details>
-
-
-<h3 id="행-Row-추가하기"><a href="#행-Row-추가하기" class="headerlink" title="행(Row) 추가하기"></a>행(Row) 추가하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">frame_add_index = frame_add_col.copy()</span><br><span class="line">frame_add_index.loc[<span class="string">&#x27;사람4&#x27;</span>] = [<span class="number">31</span>, <span class="number">158</span>, <span class="number">48</span>, <span class="string">&#x27;female&#x27;</span>]</span><br><span class="line">frame_add_index</span><br></pre></td></tr></table></figure>
-
-
-
-<details> 
-<summary>출력</summary>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>gender</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>사람1</th>
-      <td>20</td>
-      <td>176</td>
-      <td>73</td>
-      <td>male</td>
-    </tr>
-    <tr>
-      <th>사람2</th>
-      <td>39</td>
-      <td>182</td>
-      <td>78</td>
-      <td>male</td>
-    </tr>
-    <tr>
-      <th>사람3</th>
-      <td>41</td>
-      <td>180</td>
-      <td>69</td>
-      <td>female</td>
-    </tr>
-    <tr>
-      <th>사람4</th>
-      <td>31</td>
-      <td>158</td>
-      <td>48</td>
-      <td>female</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-</details>
-
-
-<h3 id="행-열-삭제하기"><a href="#행-열-삭제하기" class="headerlink" title="행, 열 삭제하기"></a>행, 열 삭제하기</h3><p>drop 메소드를 사용하면 행 또는 열을 삭제할 수 있다.<br>axis 값은 행이면’0’, 열이면 ‘1’로 지정해주면 된다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;remove age column&#x27;</span>)</span><br><span class="line">frame_add_col.drop(<span class="string">&quot;height&quot;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<details> 
-<summary>출력</summary>
-
-<pre><code>remove age column
-</code></pre>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>weight</th>
-      <th>gender</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>사람1</th>
-      <td>20</td>
-      <td>73</td>
-      <td>male</td>
-    </tr>
-    <tr>
-      <th>사람2</th>
-      <td>39</td>
-      <td>78</td>
-      <td>male</td>
-    </tr>
-    <tr>
-      <th>사람3</th>
-      <td>41</td>
-      <td>69</td>
-      <td>female</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-</details>  
-
-
-
-<p>그러나 이 경우 기존에 있던 <code>frame_add_col</code>에서 삭제되는게 아니라 삭제된 상태의 프레임을 리턴해준 것이다.<br>그러므로 기존 프레임에 적용하기 위해서 <code>inplace = True</code> 옵션을 추가로 주어야 한다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame_add_index.drop(<span class="string">&#x27;사람2&#x27;</span>, axis=<span class="number">0</span>, inplace = <span class="literal">True</span>)</span><br><span class="line">frame_add_index</span><br></pre></td></tr></table></figure>
-
-
-<details> 
-<summary>출력</summary>
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>height</th>
-      <th>weight</th>
-      <th>gender</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>사람1</th>
-      <td>20</td>
-      <td>176</td>
-      <td>73</td>
-      <td>male</td>
-    </tr>
-    <tr>
-      <th>사람3</th>
-      <td>41</td>
-      <td>180</td>
-      <td>69</td>
-      <td>female</td>
-    </tr>
-    <tr>
-      <th>사람4</th>
-      <td>31</td>
-      <td>158</td>
-      <td>48</td>
-      <td>female</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-</details>
-
-  
-  
-  
-  
-
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://hong-sam.tistory.com/100">https://hong-sam.tistory.com/100</a></li>
-</ul>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/2/">Zurück</a></div><div class="pagination-next"><a href="/page/4/">Weiter</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><a class="pagination-link is-current" href="/page/3/">3</a></li><li><a class="pagination-link" href="/page/4/">4</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="WJ&#039;s Devlog"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">WJ&#039;s Devlog</p><p class="is-size-6 is-block">수업 일기장</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Ansan</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Seiten</p><a href="/archives"><p class="title">33</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Kategorien</p><a href="/categories"><p class="title">13</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">43</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Folgen</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Kategorien</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/DB/"><span class="level-start"><span class="level-item">DB</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Data-Visualization/"><span class="level-start"><span class="level-item">Data Visualization</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/Github/"><span class="level-start"><span class="level-item">Github</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/JAVA/"><span class="level-start"><span class="level-item">JAVA</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Javascript/"><span class="level-start"><span class="level-item">Javascript</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Markdown/"><span class="level-start"><span class="level-item">Markdown</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/PostgreSQL/"><span class="level-start"><span class="level-item">PostgreSQL</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/blog/"><span class="level-start"><span class="level-item">blog</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/deploy/"><span class="level-start"><span class="level-item">deploy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/pandas/"><span class="level-start"><span class="level-item">pandas</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Letzte Einträge</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-31T05:31:25.000Z">2022-01-31</time></p><p class="title"><a href="/2022/01/31/Java-overloading-overriding/">(JAVA) 오버로딩, 오버라이딩 차이점</a></p><p class="categories"><a href="/categories/JAVA/">JAVA</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-18T04:22:44.000Z">2022-01-18</time></p><p class="title"><a href="/2022/01/18/sqlreview-5/">SQL리뷰 수업 코드정리-5</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-17T04:07:20.000Z">2022-01-17</time></p><p class="title"><a href="/2022/01/17/sqlreview-4/">SQL리뷰 수업 코드정리-4</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-13T11:48:56.000Z">2022-01-13</time></p><p class="title"><a href="/2022/01/13/javascript-record-4/">자바스크립트(Javascript) 기록-4</a></p><p class="categories"><a href="/categories/Javascript/">Javascript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-13T07:18:20.000Z">2022-01-13</time></p><p class="title"><a href="/2022/01/13/sqlreview-3/">SQL리뷰 수업 코드정리-3</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archive</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">December 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">November 2021</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">October 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BeautifulSoup/"><span class="tag">BeautifulSoup</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Callback/"><span class="tag">Callback</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Context-manager/"><span class="tag">Context manager</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Crawling/"><span class="tag">Crawling</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DB/"><span class="tag">DB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Data/"><span class="tag">Data</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Data-Visualization/"><span class="tag">Data Visualization</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Database/"><span class="tag">Database</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Decision-Tree/"><span class="tag">Decision Tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Decorator/"><span class="tag">Decorator</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Function/"><span class="tag">Function</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Git/"><span class="tag">Git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Grammar/"><span class="tag">Grammar</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Graph/"><span class="tag">Graph</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Install/"><span class="tag">Install</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JAVA/"><span class="tag">JAVA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Javascript/"><span class="tag">Javascript</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Kaggle/"><span class="tag">Kaggle</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Link/"><span class="tag">Link</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Machine-Learning/"><span class="tag">Machine Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Numpy/"><span class="tag">Numpy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Plotly/"><span class="tag">Plotly</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgreSQL/"><span class="tag">PostgreSQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgresSQL/"><span class="tag">PostgresSQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PyCharm/"><span class="tag">PyCharm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Repository/"><span class="tag">Repository</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQL/"><span class="tag">SQL</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Setting/"><span class="tag">Setting</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/branch/"><span class="tag">branch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/checkout/"><span class="tag">checkout</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/deploy/"><span class="tag">deploy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/heroku/"><span class="tag">heroku</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pandas/"><span class="tag">pandas</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/query/"><span class="tag">query</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stub/"><span class="tag">stub</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/version/"><span class="tag">version</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Abonnieren Sie Updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Abonnieren"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Abonnieren"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="연습장" height="28"></a><p class="is-size-7"><span>&copy; 2022 WJ</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("kr");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/2/">Previous</a></div><div class="pagination-next"><a href="/page/4/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><a class="pagination-link is-current" href="/page/3/">3</a></li><li><a class="pagination-link" href="/page/4/">4</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="WJ&#039;s Devlog"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">WJ&#039;s Devlog</p><p class="is-size-6 is-block">수업 일기장</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Ansan</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">13</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">47</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/DB/"><span class="level-start"><span class="level-item">DB</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Data-Visualization/"><span class="level-start"><span class="level-item">Data Visualization</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/Github/"><span class="level-start"><span class="level-item">Github</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/JAVA/"><span class="level-start"><span class="level-item">JAVA</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Javascript/"><span class="level-start"><span class="level-item">Javascript</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Markdown/"><span class="level-start"><span class="level-item">Markdown</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/PostgreSQL/"><span class="level-start"><span class="level-item">PostgreSQL</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/blog/"><span class="level-start"><span class="level-item">blog</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/deploy/"><span class="level-start"><span class="level-item">deploy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/pandas/"><span class="level-start"><span class="level-item">pandas</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-02-04T02:06:52.000Z">2022-02-04</time></p><p class="title"><a href="/2022/02/04/Java-Map/">(JAVA) 맵 (Map) 자료형</a></p><p class="categories"><a href="/categories/JAVA/">JAVA</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-31T05:31:25.000Z">2022-01-31</time></p><p class="title"><a href="/2022/01/31/Java-overloading-overriding/">(JAVA) 오버로딩, 오버라이딩 차이점</a></p><p class="categories"><a href="/categories/JAVA/">JAVA</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-18T04:22:44.000Z">2022-01-18</time></p><p class="title"><a href="/2022/01/18/sqlreview-5/">SQL리뷰 수업 코드정리-5</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-17T04:07:20.000Z">2022-01-17</time></p><p class="title"><a href="/2022/01/17/sqlreview-4/">SQL리뷰 수업 코드정리-4</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-13T11:48:56.000Z">2022-01-13</time></p><p class="title"><a href="/2022/01/13/javascript-record-4/">자바스크립트(Javascript) 기록-4</a></p><p class="categories"><a href="/categories/Javascript/">Javascript</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">December 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">November 2021</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">October 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BeautifulSoup/"><span class="tag">BeautifulSoup</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Callback/"><span class="tag">Callback</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Context-manager/"><span class="tag">Context manager</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Crawling/"><span class="tag">Crawling</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/DB/"><span class="tag">DB</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Data/"><span class="tag">Data</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Data-Visualization/"><span class="tag">Data Visualization</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Database/"><span class="tag">Database</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Decision-Tree/"><span class="tag">Decision Tree</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Decorator/"><span class="tag">Decorator</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Function/"><span class="tag">Function</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Git/"><span class="tag">Git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Grammar/"><span class="tag">Grammar</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Graph/"><span class="tag">Graph</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HashMap/"><span class="tag">HashMap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Install/"><span class="tag">Install</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JAVA/"><span class="tag">JAVA</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Javascript/"><span class="tag">Javascript</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Kaggle/"><span class="tag">Kaggle</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Link/"><span class="tag">Link</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Machine-Learning/"><span class="tag">Machine Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Map/"><span class="tag">Map</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Markdown/"><span class="tag">Markdown</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Numpy/"><span class="tag">Numpy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Overloading/"><span class="tag">Overloading</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Overriding/"><span class="tag">Overriding</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Plotly/"><span class="tag">Plotly</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgreSQL/"><span class="tag">PostgreSQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgresSQL/"><span class="tag">PostgresSQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PyCharm/"><span class="tag">PyCharm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Repository/"><span class="tag">Repository</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQL/"><span class="tag">SQL</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Setting/"><span class="tag">Setting</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/branch/"><span class="tag">branch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/checkout/"><span class="tag">checkout</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/deploy/"><span class="tag">deploy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/github/"><span class="tag">github</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/heroku/"><span class="tag">heroku</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pandas/"><span class="tag">pandas</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/query/"><span class="tag">query</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/stub/"><span class="tag">stub</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/version/"><span class="tag">version</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="연습장" height="28"></a><p class="is-size-7"><span>&copy; 2022 WJ</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("kr");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
                     fold: 'unfolded'
                 }
             }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Zurück nach oben" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
       window.cookieconsent.initialise({
         type: "info",
         theme: "edgeless",
         static: false,
         position: "bottom-left",
         content: {
-          message: "Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern.",
-          dismiss: "Verstanden!",
-          allow: "Cookies zulassen",
-          deny: "Ablehnen",
-          link: "Mehr erfahren",
-          policy: "Cookie-Richtlinie",
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
           href: "https://www.cookiesandyou.com/",
         },
         palette: {
@@ -2103,6 +1519,6 @@ Name: 사람1, dtype: int64
                 }
                 $('.justified-gallery').justifiedGallery();
             }
-        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Tippen Sie etwas..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"Tippen Sie etwas...","untitled":"(Ohne Titel)","posts":"Seiten","pages":"Pages","categories":"Kategorien","tags":"Tags"});
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
         });</script></body></html>
